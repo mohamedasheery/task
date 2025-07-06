@@ -1,4 +1,39 @@
-    canvas {
-      display: block;
-      background-color: #000;
-    }
+
+
+
+  canvas {
+    display: block;
+    background-color: #000;
+  }
+
+  .zoom-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .zoom-controls button {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    background: #ffffffcc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .zoom-controls button:last-child {
+  font-size: 20px;
+  background: #ddd;
+}
+
+
+  .zoom-controls button:hover {
+    background: #fff;
+  }
+
