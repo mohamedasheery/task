@@ -6,6 +6,15 @@
     background-color: #000;
   }
 
+  svg{
+        circle{
+            // fill: rgba(0, 150, 255, 0.5);
+            cursor: pointer;
+            transition: fill 0.2s;
+        }
+
+  }
+
   .zoom-controls {
     position: fixed;
     bottom: 20px;
@@ -37,7 +46,7 @@
     background: #fff;
   }
 
-.tooltip {
+.tooltip-text {
   position: fixed !important;  /* مهم جدًا عشان تخرج من أي عنصر نسبي */
   background: rgba(0, 0, 0, 0.8);
   color: #fff;

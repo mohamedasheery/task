@@ -3,7 +3,7 @@ import { Component, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef } fr
 import { CommonModule } from '@angular/common';
 import { Router } from "@angular/router";
 
-// declare const $: any;
+
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,7 @@ export class Home implements AfterViewInit {
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
 
   canvasWidth = 0;
-canvasHeight = 0;
+  canvasHeight = 0;
   totalFrames = 36;
   currentFrame = 0;
   dragging = false;
@@ -31,18 +31,24 @@ canvasHeight = 0;
   minZoom = 0.5;
   maxZoom = 3;
 
+
+  tooltipText = '';
+  tooltipVisible = false;
+  tooltipX = 0;
+  tooltipY = 0;
+
   initialPinchDistance: number | null = null;
   initialZoom = 1;
 
-  constructor(private cdr: ChangeDetectorRef , private router:Router){}
+  constructor(private cdr: ChangeDetectorRef, private router: Router) { }
 
   ngAfterViewInit() {
- const canvas = this.canvasRef.nativeElement;
-this.canvasWidth = canvas.clientWidth;
-this.canvasHeight = canvas.clientHeight;
+    const canvas = this.canvasRef.nativeElement;
+    this.canvasWidth = canvas.clientWidth;
+    this.canvasHeight = canvas.clientHeight;
 
-  // حل المشكلة هنا
-  this.cdr.detectChanges();
+    // حل المشكلة هنا
+    this.cdr.detectChanges();
 
     this.preloadImages().then(() => {
       this.drawImage();
@@ -166,14 +172,14 @@ this.canvasHeight = canvas.clientHeight;
 
 
   zoomIn() {
-  this.zoom = Math.min(this.zoom + this.zoomStep, this.maxZoom);
-  this.drawImage();
-}
+    this.zoom = Math.min(this.zoom + this.zoomStep, this.maxZoom);
+    this.drawImage();
+  }
 
-zoomOut() {
-  this.zoom = Math.max(this.zoom - this.zoomStep, this.minZoom);
-  this.drawImage();
-}
+  zoomOut() {
+    this.zoom = Math.max(this.zoom - this.zoomStep, this.minZoom);
+    this.drawImage();
+  }
 
   resetZoom() {
     this.zoom = 1;
@@ -181,55 +187,25 @@ zoomOut() {
   }
 
 
+  onHotspotHover(name: string, event: MouseEvent, element: HTMLElement) {
+    this.tooltipText = name;
+    this.tooltipVisible = true;
+    this.tooltipX = event.clientX + 10;
+    this.tooltipY = event.clientY + 10;
+    console.log('مررت فوق', name);
+    element.setAttribute('fill', 'rgba(255, 0, 0, 0.3)'); // غيّر اللون
 
-  hotspots = [
-  { x: 150, y: 100, radius: 30, name: 'نقطة 1' },
-  { x: 300, y: 200, radius: 25, name: 'نقطة 2' }
-];
-
-onMouseMove(event: MouseEvent) {
-  const rect = this.canvasRef.nativeElement.getBoundingClientRect();
-  const mouseX = event.clientX - rect.left;
-  const mouseY = event.clientY - rect.top;
-
-  for (const spot of this.hotspots) {
-    const dist = Math.sqrt((mouseX - spot.x) ** 2 + (mouseY - spot.y) ** 2);
-    if (dist <= spot.radius) {
-      console.log('مررت فوق', spot.name);
-      // تقدر تعمل تأثيرات أو تغير المؤشر
-      break;
-    }
   }
-}
 
+  onHotspotLeave(element: HTMLElement) {
+    this.tooltipVisible = false;
+    element.setAttribute('fill', 'rgba(0, 150, 255, 0.5)'); // رجّع اللون
 
+  }
 
-
-
-tooltipText = '';
-tooltipVisible = false;
-tooltipX = 0;
-tooltipY = 0;
-
-onHotspotHover(name: string, event: MouseEvent , element: HTMLElement) {
-  this.tooltipText = name;
-  this.tooltipVisible = true;
-  this.tooltipX = event.clientX + 10;
-  this.tooltipY = event.clientY + 10;
-  console.log('مررت فوق', name);
-    element.setAttribute('fill', 'rgba(0, 150, 255, 0.5)'); // غيّر اللون
-
-}
-
-onHotspotLeave(element: HTMLElement) {
-  this.tooltipVisible = false;
-    element.setAttribute('fill', 'rgba(255, 0, 0, 0.3)'); // رجّع اللون
-
-}
-
-onHotspotClick(){
-  this.router.navigate(['/vr']);
-}
+  onHotspotClick() {
+    this.router.navigate(['/vr']);
+  }
 
 
 

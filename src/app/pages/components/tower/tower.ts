@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tower',
@@ -19,6 +20,7 @@ export class Tower {
   x: 0,
   y: 0
 };
+  constructor(private router: Router) { }
 
 
 highlightFloor(floor: string) {
@@ -46,6 +48,15 @@ updateTooltip(event: MouseEvent) {
   this.tooltip.x = event.clientX + 10;
   this.tooltip.y = event.clientY + 10;
 }
+
+
+
+  moveToVr() {
+    console.log('Navigating to VR');
+    
+    this.router.navigate(['/vr']);
+  }
+
 
 
 

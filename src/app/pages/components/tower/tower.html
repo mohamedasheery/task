@@ -12,14 +12,14 @@
             <svg (mousemove)="updateTooltip($event)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"
                 preserveAspectRatio="xMidYMid slice">
                 <g transform="scale(0.25)">
-                    <g data-floor="0" (mouseenter)="highlightFloor('0')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="0" (click)="moveToVr()" (mouseenter)="highlightFloor('0')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '0'">
                         <path class="visible available" data-unit="gf"
                             d="M3557 4503l939 252l3 -4l0 -21l-47 -12l2 -74l48 -57l1 -5l-113 -29l0 -17l-198 -51l-13 14l-95 -25l0 -17l-216 -55l-13 13l-122 -32l-1 -16l-181 -47l-41 37l1 47l-79 70l-43 -12l-92 80l2 49l-59 52l-44 -12l-58 50l3 50l-92 81l-46 -13l-154 134l-709 -219l22 194l171 55l89 -71l108 34l10 104l324 104M5762 5296l155 -313l145 -294l22 -192l-60 118l-3 23l-37 73l29 7l-7 62l-38 76l-59 -15l-38 75l-2 23l-39 76l30 8l-7 65l-43 87l-62 -17l-3 25l-36 70l-30 -9l-1 9l59 17l-7 67l-36 72l-65 -19l-203 400l-461 -144l3 -59l-60 -19l0 -1l-425 -131l-5 217l419 135l59 20l-3 61l454 148M2512 4730l-109 -33l-61 47l177 54z">
                         </path>
                     </g>
 
-                    <g data-floor="1" (mouseenter)="highlightFloor('1')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="1" (click)="moveToVr()" (mouseenter)="highlightFloor('1')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '1'" class="">
                         <path data-unit="104"
                             d="M5629 5390l65 19l36 -72l7 -67l-59 -17l1 -9l-43 -12l-195 374l-466 -141l-10 181l461 144z"
@@ -68,7 +68,7 @@
                         <path d="M3731 4325l9 -8l-1 -64l-9 -3l-1 -32l-182 -46l4 148l181 47z"></path>
                     </g>
 
-                    <g data-floor="2" (mouseenter)="highlightFloor('2')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="2" (click)="moveToVr()" (mouseenter)="highlightFloor('2')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '2'">
                         <path data-unit="204"
                             d="M5636 5232l73 21l36 -70l7 -69l-59 -16l1 -13l-43 -11l-197 365l-471 -138l-8 164l466 141z"
@@ -116,7 +116,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3729 4191l9 -8l-2 -65l-9 -2l-1 -32l-183 -45l4 133l182 46z"></path>
                     </g>
-                    <g data-floor="3" (mouseenter)="highlightFloor('3')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="3" (click)="moveToVr()" (mouseenter)="highlightFloor('3')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '3'" class="">
                         <path data-unit="304"
                             d="M5651 5074l74 20l35 -69l7 -70l-59 -16l1 -15l-43 -12l-198 357l-476 -135l-9 167l471 138z"
@@ -163,7 +163,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3726 4055l9 -7l-1 -67l-10 -2l0 -31l-186 -43l5 134l183 45z"></path>
                     </g>
-                    <g data-floor="4" (mouseenter)="highlightFloor('4')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="4" (click)="moveToVr()" (mouseenter)="highlightFloor('4')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '4'">
                         <path data-unit="404"
                             d="M5666 4912l74 20l36 -67l7 -72l-60 -15l2 -20l-44 -11l-199 348l-481 -131l-9 170l476 135z"
@@ -213,7 +213,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3723 3918l9 -8l-1 -68l-10 -3l0 -30l-187 -41l4 137l186 43z"></path>
                     </g>
-                    <g data-floor="5" (mouseenter)="highlightFloor('5')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="5" (click)="moveToVr()" (mouseenter)="highlightFloor('5')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '5'">
                         <path data-unit="504"
                             d="M5681 4747l75 19l36 -65l7 -73l-61 -15l3 -23l-45 -11l-199 339l-487 -128l-9 174l481 131z"
@@ -259,7 +259,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3720 3778l9 -8l-1 -70l-9 -2l-1 -29l-188 -40l4 139l187 41z"></path>
                     </g>
-                    <g data-floor="6" (mouseenter)="highlightFloor('6')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="6" (click)="moveToVr()" (mouseenter)="highlightFloor('6')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '6'">
                         <path data-unit="604"
                             d="M5696 4579l76 19l36 -64l8 -74l-62 -14l3 -28l-45 -10l-200 329l-492 -125l-10 178l487 128z"
@@ -308,7 +308,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3717 3635l10 -7l-2 -71l-9 -2l-1 -29l-189 -38l4 141l188 40z"></path>
                     </g>
-                    <g data-floor="7" (mouseenter)="highlightFloor('7')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="7" (click)="moveToVr()" (mouseenter)="highlightFloor('7')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '7'">
                         <path data-unit="704"
                             d="M5712 4408l77 18l36 -62l7 -76l-62 -13l3 -32l-45 -10l-201 319l-498 -121l-9 181l492 125z"
@@ -356,7 +356,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3714 3491l10 -7l-2 -73l-9 -2l-1 -27l-191 -38l5 143l189 39z"></path>
                     </g>
-                    <g data-floor="8" (mouseenter)="highlightFloor('8')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="8" (click)="moveToVr()" (mouseenter)="highlightFloor('8')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '8'">
                         <path data-unit="804"
                             d="M5728 4233l78 17l36 -59l7 -77l-62 -14l3 -35l-46 -10l-202 308l-503 -117l-10 185l498 121z"
@@ -401,7 +401,7 @@
                             class="visible available" data-bedrooms="1"></path>
                         <path d="M3711 3344l10 -7l-2 -74l-9 -2l-1 -26l-192 -37l4 146l191 38z"></path>
                     </g>
-                    <g data-floor="9" (mouseenter)="highlightFloor('9')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="9" (click)="moveToVr()" (mouseenter)="highlightFloor('9')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '9'">
                         <path data-unit="904"
                             d="M5744 4055l79 17l36 -58l8 -84l-63 -13l3 -35l-46 -9l-203 296l-509 -112l-10 189l503 117z"
@@ -439,7 +439,7 @@
                             d="M3708 3195l10 -6l-2 -77l-10 -2l0 -25l-834 -149l2 24l3 1l1 14l612 111l2 82l23 4l1 26l193 37z">
                         </path>
                     </g>
-                    <g data-floor="10" (mouseenter)="highlightFloor('10')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="10" (click)="moveToVr()" (mouseenter)="highlightFloor('10')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '10'">
                         <path data-unit="1004"
                             d="M5761 3873l79 16l37 -56l8 -85l-64 -12l4 -40l-47 -9l-204 285l-515 -108l-10 193l509 112z"
@@ -472,7 +472,7 @@
                             class="visible available" data-bedrooms="2+"></path>
                         <path d="M3705 3043l10 -6l-2 -78l-10 -2l0 -24l-840 -142l9 145l834 149z"></path>
                     </g>
-                    <g data-floor="11" (mouseenter)="highlightFloor('11')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="11" (click)="moveToVr()" (mouseenter)="highlightFloor('11')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '11'">
                         <path data-unit="1104"
                             d="M5778 3687l80 16l37 -53l8 -88l-65 -12l5 -44l-48 -8l-204 272l-521 -103l-11 197l515 108z"
@@ -511,7 +511,7 @@
                             data-bedrooms="2+">
                         </path>
                     </g>
-                    <g data-floor="12" (mouseenter)="highlightFloor('12')" (mouseleave)="unhighlightFloor()"
+                    <g data-floor="12" (click)="moveToVr()" (mouseenter)="highlightFloor('12')" (mouseleave)="unhighlightFloor()"
                         [class.selected]="highlightedFloor === '12'">
                         <path data-unit="1204"
                             d="M5795 3498l82 14l36 -50l9 -89l-66 -12l12 -127l-260 329l-528 -98l-10 202l521 103z"

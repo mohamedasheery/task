@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './vr.scss'
 })
 export class Vr {
+goBack(){
 
+  window.history.back();
+}
 }
