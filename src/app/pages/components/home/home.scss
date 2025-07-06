@@ -37,3 +37,15 @@
     background: #fff;
   }
 
+.tooltip {
+  position: fixed !important;  /* مهم جدًا عشان تخرج من أي عنصر نسبي */
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2147483647  !important;  /* تأكد إنها فوق كل شيء */
+  white-space: nowrap;
+}
+

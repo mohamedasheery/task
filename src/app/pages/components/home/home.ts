@@ -1,6 +1,7 @@
 import { Map } from "../map/map";
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from "@angular/router";
 
 // declare const $: any;
 
@@ -16,6 +17,9 @@ import { CommonModule } from '@angular/common';
 
 export class Home implements AfterViewInit {
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+
+  canvasWidth = 0;
+canvasHeight = 0;
   totalFrames = 36;
   currentFrame = 0;
   dragging = false;
@@ -30,10 +34,19 @@ export class Home implements AfterViewInit {
   initialPinchDistance: number | null = null;
   initialZoom = 1;
 
+  constructor(private cdr: ChangeDetectorRef , private router:Router){}
+
   ngAfterViewInit() {
+ const canvas = this.canvasRef.nativeElement;
+this.canvasWidth = canvas.clientWidth;
+this.canvasHeight = canvas.clientHeight;
+
+  // حل المشكلة هنا
+  this.cdr.detectChanges();
+
     this.preloadImages().then(() => {
       this.drawImage();
-      const canvas = this.canvasRef.nativeElement;
+
 
       canvas.addEventListener('mousedown', (e) => {
         this.dragging = true;
@@ -166,6 +179,58 @@ zoomOut() {
     this.zoom = 1;
     this.drawImage();
   }
+
+
+
+  hotspots = [
+  { x: 150, y: 100, radius: 30, name: 'نقطة 1' },
+  { x: 300, y: 200, radius: 25, name: 'نقطة 2' }
+];
+
+onMouseMove(event: MouseEvent) {
+  const rect = this.canvasRef.nativeElement.getBoundingClientRect();
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+
+  for (const spot of this.hotspots) {
+    const dist = Math.sqrt((mouseX - spot.x) ** 2 + (mouseY - spot.y) ** 2);
+    if (dist <= spot.radius) {
+      console.log('مررت فوق', spot.name);
+      // تقدر تعمل تأثيرات أو تغير المؤشر
+      break;
+    }
+  }
+}
+
+
+
+
+
+tooltipText = '';
+tooltipVisible = false;
+tooltipX = 0;
+tooltipY = 0;
+
+onHotspotHover(name: string, event: MouseEvent , element: HTMLElement) {
+  this.tooltipText = name;
+  this.tooltipVisible = true;
+  this.tooltipX = event.clientX + 10;
+  this.tooltipY = event.clientY + 10;
+  console.log('مررت فوق', name);
+    element.setAttribute('fill', 'rgba(0, 150, 255, 0.5)'); // غيّر اللون
+
+}
+
+onHotspotLeave(element: HTMLElement) {
+  this.tooltipVisible = false;
+    element.setAttribute('fill', 'rgba(255, 0, 0, 0.3)'); // رجّع اللون
+
+}
+
+onHotspotClick(){
+  this.router.navigate(['/vr']);
+}
+
 
 
 }

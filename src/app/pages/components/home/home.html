@@ -3,12 +3,43 @@
 
 <!-- <div id="spinner360" style="width: 100vw; height: 100vh;"></div> -->
 
-<canvas #canvas style="width:100vw; height:100vh;"></canvas>
+<!-- <canvas #canvas style="width:100vw; height:100vh;"></canvas> -->
+
+<div style="position: relative; width: 100vw; height: 100vh;">
+  <canvas #canvas style="width:100%; height:100%; display:block;"></canvas>
+  <svg
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"
+    [attr.viewBox]="'0 0 ' + canvasWidth + ' ' + canvasHeight"
+    >
+    <circle
+      #hotspot1
+      cx="50%" cy="50%" r="100"
+      fill="rgba(255, 0, 0, 0.3)"
+      pointer-events="auto"
+      (mouseenter)="onHotspotHover('نقطة 1' , $event , hotspot1)"
+      (mouseleave)="onHotspotLeave(hotspot1)"
+      (click)="onHotspotClick()"
+    />
+    <!-- أضف مناطق أخرى -->
+  </svg>
+
+  <div
+ 
+  [style.left.px]="tooltipX"
+  [style.top.px]="tooltipY"
+  class="tooltip"
+>
+<p>  {{ tooltipText + 'fhfghgh'}}</p>
+</div>
+</div>
+
+
 
 <!-- زري التحكم في الزووم -->
 <div class="zoom-controls">
   <button (click)="zoomIn()">+</button>
   <button (click)="zoomOut()">−</button>
-  <button (click)="resetZoom()">⭯</button>
+  <button (click)="resetZoom()">R</button>
+
 </div>
 
