@@ -1,0 +1,66 @@
+.main {
+    .video-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+
+        @media screen and (max-width: 768px) {
+
+            height: 566px;
+            top: 0px;
+            width: 870.769px;
+            left: -151.385px;
+
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+
+            g[data-floor].selected path {
+                fill: transparent;
+                transition: fill 0.3s;
+            }
+
+            path {
+                fill: #9177fa;
+                stroke: #9177FA;
+                stroke-width: 5;
+                cursor: pointer;
+                transition: fill 0.3s;
+                fill-opacity: 0.4;
+            }
+        }
+
+
+
+
+    }
+
+
+
+
+    .custom-tooltip {
+        position: fixed;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        pointer-events: none;
+        z-index: 1000;
+    }
+
+
+}

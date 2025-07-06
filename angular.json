@@ -17,6 +17,13 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/bootstrap/scss",
+                  "node_modules/spritespin/release/spritespin.css"
+
+              ]
+            },
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -28,6 +35,12 @@
             ],
             "styles": [
               "src/styles.scss"
+
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/spritespin/release/spritespin.min.js"
             ]
           },
           "configurations": {
@@ -87,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8ce2474c-b150-47bc-908b-00bf984a37ef"
   }
 }

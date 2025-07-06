@@ -1,0 +1,13 @@
+<div>
+
+<!-- <h3 style="z-index: 65; position: relative;">{{ currentImage }}</h3> -->
+<div class="viewer"
+     (mousedown)="onMouseDown($event)"
+     (touchstart)="onTouchStart($event)">
+  <img [src]="currentImage" draggable="false" loading="lazy" />
+</div>
+
+
+
+
+</div>
